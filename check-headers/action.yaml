@@ -23,7 +23,7 @@ runs:
           exit 0
         fi
 
-        python3 ${{ github.action_path }}/check-headers.py $PYTHON_FILES
+        python3 ${{ github.action_path }}/../spine_cicd_actions/check_headers.py $PYTHON_FILES
 
 branding:
   icon: 'file-text'

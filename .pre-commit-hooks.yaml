@@ -4,7 +4,7 @@
 - id: check-headers
   name: Check SPDX headers
   description: Check and optionally fix SPDX license headers in Python files
-  entry: check-headers/check-headers.py
+  entry: spine-check-headers
   language: python
   files: '^(src|test)/.*\.py$'
   pass_filenames: true
@@ -12,6 +12,6 @@
 - id: check-dco
   name: Check DCO sign-off
   description: Check that commit message has DCO sign-off
-  entry: dco/check-dco.py
+  entry: spine-check-dco
   language: python
   stages: [commit-msg]

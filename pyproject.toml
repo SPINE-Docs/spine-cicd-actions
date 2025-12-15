@@ -8,6 +8,10 @@ description = "Reusable CI/CD actions and pre-commit hooks for Spine Docs"
 requires-python = ">=3.8"
 dependencies = []
 
+[project.scripts]
+spine-check-headers = "spine_cicd_actions.check_headers:main"
+spine-check-dco = "spine_cicd_actions.check_dco:main"
+
 [build-system]
 requires = ["setuptools>=45"]
 build-backend = "setuptools.build_meta"
