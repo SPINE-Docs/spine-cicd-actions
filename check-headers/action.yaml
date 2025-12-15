@@ -1,0 +1,30 @@
+# SPDX-License-Identifier: Apache-2.0
+# Copyright (C) 2025, The Spine Docs organization and its contributors.
+
+name: 'Check SPDX Headers'
+description: 'Check that source files have required SPDX license headers'
+author: 'aviv1ron1@gmail.com'
+
+runs:
+  using: 'composite'
+  steps:
+    - name: Set up Python
+      uses: actions/setup-python@v5
+      with:
+        python-version: '3.11'
+
+    - name: Check SPDX headers in Python files
+      shell: bash
+      run: |
+        PYTHON_FILES=$(find src test -name "*.py" 2>/dev/null || echo "")
+
+        if [ -z "$PYTHON_FILES" ]; then
+          echo "No Python files found in src/ or test/ directories"
+          exit 0
+        fi
+
+        python3 ${{ github.action_path }}/check-headers.py $PYTHON_FILES
+
+branding:
+  icon: 'file-text'
+  color: 'blue'
