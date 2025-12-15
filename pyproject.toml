@@ -1,0 +1,13 @@
+# SPDX-License-Identifier: Apache-2.0
+# Copyright (C) 2025, The Spine Docs organization and its contributors.
+
+[project]
+name = "spine-cicd-actions"
+version = "1.0.0"
+description = "Reusable CI/CD actions and pre-commit hooks for Spine Docs"
+requires-python = ">=3.8"
+dependencies = []
+
+[build-system]
+requires = ["setuptools>=45"]
+build-backend = "setuptools.build_meta"
