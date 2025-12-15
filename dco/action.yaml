@@ -22,6 +22,13 @@ runs:
         MISSING_DCO=false
 
         for commit in $COMMITS; do
+          # Skip merge commits (they have multiple parents)
+          PARENTS=$(git rev-list --parents -n 1 $commit | wc -w)
+          if [ "$PARENTS" -gt 2 ]; then
+            echo "ℹ️  Skipping merge commit $commit"
+            continue
+          fi
+
           MESSAGE=$(git log -1 --format=%B $commit)
           if ! echo "$MESSAGE" | grep -q "^Signed-off-by:"; then
             echo "❌ Commit $commit is missing DCO sign-off"
