@@ -12,6 +12,9 @@ dependencies = []
 spine-check-headers = "spine_cicd_actions.check_headers:main"
 spine-check-dco = "spine_cicd_actions.check_dco:main"
 
+[tool.setuptools]
+packages = ["spine_cicd_actions"]
+
 [build-system]
 requires = ["setuptools>=45"]
 build-backend = "setuptools.build_meta"
