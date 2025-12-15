@@ -1,0 +1,17 @@
+# SPDX-License-Identifier: Apache-2.0
+# Copyright (C) 2025, The Spine Docs organization and its contributors.
+
+- id: check-headers
+  name: Check SPDX headers
+  description: Check and optionally fix SPDX license headers in Python files
+  entry: python3 check-headers/check-headers.py
+  language: system
+  files: '^(src|test)/.*\.py$'
+  pass_filenames: true
+
+- id: check-dco
+  name: Check DCO sign-off
+  description: Check that commit message has DCO sign-off
+  entry: python3 dco/check-dco.py
+  language: system
+  stages: [commit-msg]
