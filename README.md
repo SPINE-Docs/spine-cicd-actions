@@ -8,7 +8,7 @@ Reusable GitHub Actions for CI/CD workflows across the Spine Docs organization.
 
 Validates that all commits in a pull request have proper Developer Certificate of Origin (DCO) sign-off.
 
-**Usage:**
+**GitHub Actions Usage:**
 
 ```yaml
 name: DCO Check
@@ -26,15 +26,28 @@ jobs:
       - uses: SPINE-Docs/spine-cicd-actions/dco@v1
 ```
 
+**Pre-commit Hook Usage:**
+
+```yaml
+- repo: https://github.com/SPINE-Docs/spine-cicd-actions
+  rev: v1
+  hooks:
+    - id: check-dco
+      name: Check DCO sign-off
+      entry: python3 dco/check-dco.py
+      language: system
+      stages: [commit-msg]
+```
+
 **What it checks:**
-- All commits in the PR have a `Signed-off-by:` line
+- All commits have a valid `Signed-off-by: Name <email>` line
 - Provides helpful error messages if DCO is missing
 
 ### Check SPDX Headers
 
 Validates that all Python source files contain required SPDX license headers.
 
-**Usage:**
+**GitHub Actions Usage:**
 
 ```yaml
 name: Check Headers
@@ -52,11 +65,25 @@ jobs:
       - uses: SPINE-Docs/spine-cicd-actions/check-headers@v1
 ```
 
+**Pre-commit Hook Usage:**
+
+```yaml
+- repo: https://github.com/SPINE-Docs/spine-cicd-actions
+  rev: v1
+  hooks:
+    - id: check-headers
+      name: Check SPDX headers
+      entry: python3 check-headers/check-headers.py --fix
+      language: system
+      files: '^(src|test)/.*\.py$'
+```
+
 **What it checks:**
 - Python files in `src/` and `test/` directories
 - Requires both:
   - `# SPDX-License-Identifier: Apache-2.0`
   - `# Copyright (C) 2025, The Spine Docs organization and its contributors.`
+- With `--fix` flag: Automatically adds missing headers
 
 ## Versioning
 
