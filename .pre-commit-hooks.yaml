@@ -5,7 +5,7 @@
   name: Check SPDX headers
   description: Check and optionally fix SPDX license headers in Python files
   entry: check-headers/check-headers.py
-  language: script
+  language: python
   files: '^(src|test)/.*\.py$'
   pass_filenames: true
 
@@ -13,5 +13,5 @@
   name: Check DCO sign-off
   description: Check that commit message has DCO sign-off
   entry: dco/check-dco.py
-  language: script
+  language: python
   stages: [commit-msg]
