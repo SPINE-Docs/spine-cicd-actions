@@ -6,11 +6,15 @@ name = "spine-cicd-actions"
 version = "1.0.0"
 description = "Reusable CI/CD actions and pre-commit hooks for Spine Docs"
 requires-python = ">=3.8"
-dependencies = []
+dependencies = [
+    "PyGithub>=2.1.1",
+    "PyYAML>=6.0.1",
+]
 
 [project.scripts]
 spine-check-headers = "spine_cicd_actions.check_headers:main"
 spine-check-dco = "spine_cicd_actions.check_dco:main"
+spine-sync-labels = "spine_cicd_actions.sync_labels:main"
 
 [tool.setuptools]
 packages = ["spine_cicd_actions"]
