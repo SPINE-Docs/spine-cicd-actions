@@ -11,7 +11,7 @@ import sys
 from pathlib import Path
 
 import yaml
-from github import Github, GithubException
+from github import Auth, Github, GithubException
 
 
 def load_repos(repos_file: Path) -> list[str]:
@@ -93,7 +93,8 @@ def main():
         sys.exit(1)
 
     # Initialize GitHub client
-    g = Github(github_token)
+    auth = Auth.Token(github_token)
+    g = Github(auth=auth)
 
     # Get the source repository
     try:
