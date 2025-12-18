@@ -21,8 +21,6 @@ runs:
 
     - name: Sync labels to downstream repos
       shell: bash
-      env:
-        GITHUB_TOKEN: ${{ github.token }}
       run: |
         python ${{ github.action_path }}/../spine_cicd_actions/sync_labels.py
 
